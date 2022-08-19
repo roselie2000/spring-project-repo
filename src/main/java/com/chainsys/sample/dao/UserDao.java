@@ -1,9 +1,12 @@
 package com.chainsys.sample.dao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.chainsys.sample.mapper.UserMapper;
 import com.chainsys.sample.model.Users;
 
 @Repository
@@ -14,8 +17,8 @@ public class UserDao {
 	
 	public int signUp(Users us) {
 		String q = "insert into usertable(userid, username, password) values (userId.nextval, ?, ?)";
-		Object[] data = {us.getUserName(), us.getPassword()};
-		int rows = temp.update(q, data);
+		Object[] data = {us.getUserName(), us.getPassword()};//create the object for execute the query
+		int rows = temp.update(q, data);//execute the query
 		return rows;
 	}
 	
@@ -32,4 +35,41 @@ public class UserDao {
 		int flag = temp.update(q, data);
 		return flag;
 	}
+	
+	public String findOne(Integer userId) {
+		String sql = "select username from usertable where userid = ?";
+		System.out.println(userId);
+		String queryForObject = null;
+		try {
+			queryForObject = temp.queryForObject(sql, String.class, userId);
+			System.out.println(queryForObject);
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return queryForObject;
+	}
+	
+	public Users FindById(Integer userId) {
+		String sql = "select * from usertable where userid = ?";
+		System.out.println(userId);
+		Users queryObj = null;
+		try {
+			queryObj = temp.queryForObject(sql, new UserMapper(), userId);
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return queryObj;
+		
+	}
+	
+	public List<Users> findAll(){
+		
+		String sql = "select * from usertable";
+		List<Users> data = temp.query(sql, new UserMapper());
+		return data;
+		
+	}
+	
 }

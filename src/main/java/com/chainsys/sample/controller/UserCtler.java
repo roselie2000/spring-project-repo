@@ -1,7 +1,10 @@
 package com.chainsys.sample.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -70,4 +73,42 @@ public class UserCtler {
 			return "There is some problem!, Please check your username";
 		}
 	}
+	
+	@GetMapping("/findOne")
+	public String findOne(@RequestParam("userid") Integer userId, Model model) {
+		System.out.println("Finding");
+		String name = usdao.findOne(userId);
+		System.out.println(name);
+		if(name == null) {
+			System.out.println("User not found");
+		}
+		else {
+			System.out.println("User found"+  name);
+			model.addAttribute("name", name);
+		}
+		return "user.jsp";
+	}
+	
+	@GetMapping("/findById")
+	public String findById(@RequestParam("userid") Integer userId, Model model) {
+			Users data = usdao.FindById(userId);
+			System.out.println(data);
+			model.addAttribute("list", data);
+		return "user.jsp";
+		
+	}
+	
+	@GetMapping("/user_list1")
+	public String findAll(Model model) {
+		List<Users> list = usdao.findAll();
+		if(list == null) {
+			System.out.println("No data");
+		}
+		else {
+			model.addAttribute("userlist", list);
+		}
+		return "user-list.jsp";
+	}
+	
+	
 }

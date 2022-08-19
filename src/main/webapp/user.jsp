@@ -4,13 +4,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Logout page</title>
+<title>Insert title here</title>
 </head>
 <body>
-<form action="/findById">
-<label>User Id</label><br>
-<input type="text" name="userid"><br>
-<input type="submit" value="Find">
-</form>
+<p>User Name: ${name}</p>
+
+<p>${list.userName}</p>
+<a href="/user_list1">View Users</a>
 </body>
 </html>

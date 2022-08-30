@@ -7,13 +7,13 @@
 <title>Sign up page</title>
 </head>
 <body>
-<form action="/login">
+<form action="signup">
 <label>User name :</label><br>
 <input type="text" name = "name"><br>
 <label>Password :</label><br>
 <input type="password" name = "pwd"><br>
 <input type="submit" value="Sign in"><br>
 </form>
-<a href = "login.jsp"><input type = "button" value="login"></a>
+<!-- <input type = "button" value="login"> -->
 </body>
 </html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans  
+    xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+                http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">  
+                
+    <bean id="mark" class="com.chainsys.sample.model.Mark">
+		<constructor-arg value="78" type="int"></constructor-arg>
+		<constructor-arg value="90" type="int"></constructor-arg>
+		<constructor-arg value="95" type="int"></constructor-arg>
+	</bean>
+	
+    <bean id="stud" class="com.chainsys.sample.model.Student">  
+		<constructor-arg value="5033" type="int"></constructor-arg> 
+		<constructor-arg value="Roselie"></constructor-arg> 
+		<constructor-arg ref="mark"></constructor-arg>
+	</bean>
+
+ 
+ </beans>
+

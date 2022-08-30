@@ -16,5 +16,6 @@
 </form>
 <a href = "changepwd.jsp">forgot password?</a><br>
 <a href = "logout.jsp"><input type="button" value="log out"></a>
+<a href = "demo.jsp">click here!</a>
 </body>
 </html>

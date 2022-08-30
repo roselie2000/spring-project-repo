@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.chainsys.sample.dto.UserDto;
 import com.chainsys.sample.mapper.UserMapper;
 import com.chainsys.sample.model.Users;
 
@@ -15,9 +16,12 @@ public class UserDao {
 	@Autowired
 	JdbcTemplate temp;
 	
-	public int signUp(Users us) {
+	public int signUp(UserDto us) {
+		System.out.println("Successfully saved!");
 		String q = "insert into usertable(userid, username, password) values (userId.nextval, ?, ?)";
-		Object[] data = {us.getUserName(), us.getPassword()};//create the object for execute the query
+		System.out.println(us.getName());
+		Object[] data = {us.getName(), us.getPwd()};//create the object for execute the query
+		 
 		int rows = temp.update(q, data);//execute the query
 		return rows;
 	}

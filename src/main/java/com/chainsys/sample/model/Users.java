@@ -1,8 +1,6 @@
 package com.chainsys.sample.model;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 
-@EntityScan
 public class Users {
 
 	private int userId;

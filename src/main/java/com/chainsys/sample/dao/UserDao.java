@@ -16,6 +16,10 @@ public class UserDao {
 	@Autowired
 	JdbcTemplate temp;
 	
+	public void display(Users us) {
+		System.out.println(us.getUserName());
+		System.out.println();
+	}
 	public int signUp(UserDto us) {
 		System.out.println("Successfully saved!");
 		String q = "insert into usertable(userid, username, password) values (userId.nextval, ?, ?)";
